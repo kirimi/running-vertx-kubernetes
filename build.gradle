@@ -42,7 +42,8 @@ dependencies {
     compile "io.vertx:vertx-core:$versions.vertx_version"
     compile "io.vertx:vertx-web:$versions.vertx_version"
     compile "io.vertx:vertx-hazelcast:$versions.vertx_version"
-    compile "io.vertx:vertx-service-discovery-bridge-kubernetes:$versions.vertx_version"
+
+    compile "com.hazelcast:hazelcast-kubernetes:1.1.0"
 
     runtime "org.slf4j:slf4j-jdk14:$versions.slf4j_version"
     compile "org.slf4j:slf4j-api:$versions.slf4j_version"
@@ -55,23 +56,14 @@ compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
 
-
 vertx {
     mainVerticle = "com.kctrl.echo.EchoVerticle"
 }
-
-
 
 shadowJar {
     baseName = 'echo'
     version = null
     classifier = null
-//
-    mainClassName = 'io.vertx.core.Launcher'
-//
-    mergeServiceFiles {
-        include 'META-INF/services/io.vertx.core.spi.VerticleFactory'
-    }
 }
 
 task wrapper(type: Wrapper) {

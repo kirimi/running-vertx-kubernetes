@@ -6,7 +6,7 @@ import java.net.InetAddress
 
 class EchoVerticle : AbstractVerticle() {
 
-    private val HOST_ADDRESS = InetAddress.getLocalHost().getHostAddress()
+    private val HOST_ADDRESS = InetAddress.getLocalHost().hostAddress
 
     override fun start() {
         val inst = vertx.deploymentIDs()

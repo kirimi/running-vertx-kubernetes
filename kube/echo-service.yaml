@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: echo
+    visualize: "true"
+    cluster01: "true"
+    service-label-name: cluster01
+  name: echo
+spec:
+  ports:
+    - port: 5701
+      targetPort: 5701
+      name: echo
+  selector:
+    name: echo
